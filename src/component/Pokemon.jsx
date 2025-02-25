@@ -82,9 +82,9 @@ const Paimon = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="form-control"
-            style={{ width: '300px', height: '50px'}}
+            style={{ width: '500px', height: '70px'}}
           />
-          <Button variant="warning" type="submit" className="btn-submit" style={{ backgroundColor: 'maroon', border: '2.25px solid gold', color: 'gold' }}>Search</Button>
+          <Button variant="warning" type="submit" className="btn-submit" style={{ backgroundColor: 'maroon', border: '2.25px solid gold', color: 'gold' , width: '120px', height: '70px', fontFamily: 'Noto Sans Jp, serif'}}>Search</Button>
         </Form>
       </div>
 
@@ -93,7 +93,7 @@ const Paimon = () => {
         <>
           <div className="recommendations" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
             {recommendedPokemon.map((poke) => (
-              <Card key={poke.id} className="pokemon-card" style={{ margin: '10px', cursor: 'pointer' , background: 'maroon' , color: '#fff', borderRadius: '18px'}} onClick={async () => { 
+              <Card key={poke.id} className="pokemon-card" style={{ margin: '10px', cursor: 'pointer' , background: 'maroon' , color: 'gold', borderRadius: '18px'}} onClick={async () => { 
                 setPokemon(poke); 
                 const description = await fetchPokemonSpecies(poke.id); // fetch description pokemon on clicked
                 setPokemonDescription(description);
@@ -109,7 +109,7 @@ const Paimon = () => {
                     Weight: {poke.weight}
                   </Card.Text>
                   <Card.Text>
-                    Type: {poke.types.map((type) => type.type.name).join(', ')}
+                    Type: {poke.types.map((type) => type.type.name).join(',')}
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -121,7 +121,7 @@ const Paimon = () => {
       {/* present the search */}
       {pokemon && (
         <div className="search-result">
-          <Card className="pokemon-card" onClick={handleShow} style={{ cursor: 'pointer', marginTop: '20px' , color: '#fff'}}>
+          <Card className="pokemon-card" onClick={handleShow} style={{ cursor: 'pointer', marginTop: '20px', marginBottom: '40px', color: 'gold'}}>
             <Card.Body>
               <Card.Title>{pokemon.name}</Card.Title>
               <Card.Img variant="top" src={pokemon.sprites.front_default} alt={pokemon.name} />
@@ -146,7 +146,7 @@ const Paimon = () => {
               <img
                 src={pokemon.sprites.front_default}
                 alt={pokemon.name}
-                style={{ width: '200px', height: '200px' }}
+                style={{ width: '300px', height: '300px',}}
               />
               <p><strong>Height:</strong> {pokemon.height}</p>
               <p><strong>Weight:</strong> {pokemon.weight}</p>
@@ -154,7 +154,7 @@ const Paimon = () => {
               <p><strong>Abilities:</strong> {pokemon.abilities.map((ability) => ability.ability.name).join(', ')}</p>
               <p><strong>Description:</strong> {pokemonDescription}</p> {/* present of pokemon description*/}
               <p><strong>Stats:</strong></p>
-              <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
+              <ul style={{ listStyle: 'none', paddingLeft: 0}}>
                 {pokemon.stats.map((stat) => (
                   <li key={stat.stat.name} style={{ marginBottom: '10px' }}>
                     <strong>{stat.stat.name}:</strong> {stat.base_stat}
