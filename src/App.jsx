@@ -2,7 +2,9 @@ import React from 'react';
 import Paimon from './component/Pokemon'; 
 
 function App() {
-  return <Paimon />;
+  return (
+    <Paimon />
+  );
 }
 
 export default App;
